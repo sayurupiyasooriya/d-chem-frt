@@ -1,32 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import SignIn from "./components/signin.component";
-import SignUp from './components/signup.component';
-import Navigation from "./components/navbar.component"
-import React, { useState, Component } from 'react';
+import React from 'react';
+import Topbar from './components/topbar/TopBar'
+import SideBar from './components/sidebar/SideBar'
+import { NavProvider } from './context/NavContext';
+import Home from './components/home/Home';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+
 
 
 const App = () => {
-  const [name, setName] = useState('test')
-
-
-  console.log("setSate" + name)
-
 
   return (
     <Router>
       <div className="App">
-        <Switch>
-          <Route exact path="/login">
-            <SignIn />
-          </Route>
-          <Route exact path="/signup">
-            <SignUp />
-          </Route>
-        </Switch>
-      </div>
-    </Router >
+        <NavProvider>
+          <Topbar />
+          <div className="app-container">
+            <SideBar />
+            <div className="other">
+              <Switch>
+                <Route exact path="/dashboard">
+                  <Home />
+                </Route>
+                <Route exact path="/profile">
+                  <div>test</div>
+                </Route>
+              </Switch>
+            </div>
+          </div>
+        </NavProvider>
+      </div >
+
+    </Router>
+
 
   )
 

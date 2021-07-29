@@ -1,0 +1,23 @@
+.sidebar{
+    flex: 1;
+    height: 100vh;
+    position: relative;
+    background-color:white; 
+}
+
+.sidebar-collapse {
+    left: -100%;
+}
+
+.sidebarItems>ul>li{
+list-style-type: none;
+}
+.sidebarItems>ul>li>li{
+cursor: pointer;
+}
+
+.side-bar-close{
+    cursor: pointer;
+    transition: 3000ms;
+}
+

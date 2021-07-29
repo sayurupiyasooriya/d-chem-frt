@@ -1,0 +1,26 @@
+.sidebar-component  ul{
+    list-style-type: none ;
+    padding: 5px;
+}
+
+.sidebar-item-list{
+    padding: 5px;
+    margin: 5px;
+    border-radius: 10px 10px 10px 10px;
+    border-collapse: collapse;
+}
+.side-bar-link{
+    text-decoration: none;
+    color: black;
+}
+
+.sidebar-component > .title{
+    color: rgb(106, 109, 105);
+}
+
+.sidebar-item-list:hover{
+    padding: 5px ;
+    padding: 5px;
+    margin: 5px;
+    background-color: rgb(250, 225, 247);
+}

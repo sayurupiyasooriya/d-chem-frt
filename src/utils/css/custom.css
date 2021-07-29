@@ -1,0 +1,29 @@
+.nav-bar{
+    background-color: #03172C;
+    height: 80px;
+    display: flex;
+    justify-content: start;
+    align-items: cen ter;
+}
+
+.menu-bars{
+    display: flex;
+    margin-left: 2rem;
+    font-size: 2rem;
+    background: none;
+}
+
+.nav-menu{
+    background-color: #03172C;
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    justify-content: start;
+    position: fixed;
+    top: 0;
+    /* left: -100%; */
+}
+
+.nav-meunu-items{
+    
+}

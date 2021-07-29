@@ -1,16 +1,18 @@
-.App {
-  text-align: center;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
+.app-container{
+  display: flex;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+.other{
+  flex: 4;
 }
 
 .App-header {
@@ -36,3 +38,4 @@
     transform: rotate(360deg);
   }
 }
+
