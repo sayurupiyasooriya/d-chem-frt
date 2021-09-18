@@ -1,20 +1,20 @@
-import React, {useContext} from 'react'
-import "./sideBar.css"
+import React, { useContext } from 'react'
+import "./sideBar.scss"
 import SideBarCat from '../sideBarCat/SideBarCat'
 import { NavContext } from '../../context/NavContext'
 
-const SideBar = ()=> {
+const SideBar = () => {
     const [sideBar] = useContext(NavContext)
     return (
         <div className={sideBar ? 'sidebar' : 'sidebar sidebar-collapse'} >
-        <div className="sideBarWrapper">
+            <div className="sideBarWrapper">
                 <div className="sidebarHeader">
-                    <SideBarCat name='test'/>         
+                    <SideBarCat name='test' />
                 </div>
             </div>
-        
-            
-            </div>
+
+
+        </div>
     )
 }
 export default SideBar

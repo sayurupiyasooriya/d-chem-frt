@@ -1,17 +1,39 @@
-import React from 'react'
-import './card.css'
+import React, { useState, useEffect } from 'react'
+import './card.scss'
+import axios from 'axios'
+
+// importing component
+import FieldService from '../../services/field.service';
+
+const { REACT_APP_API_URL } = process.env;
+const { getCourseImg } = FieldService;
 
 export default function Card(props) {
-    return (
-        
-        <div className="card col-sm-3">
-  <img className="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg" alt="Card image cap" />
-  <div className="card-body">
-    <h5 className="card-title">{props.title}</h5>
-    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" className="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
 
-    )
+  //   const [CourseImage, setCourseImage] = useState({})
+
+  //   const imgLocation = props.courseData.image.imgLocation
+
+  // useEffect(()=>{
+  // axios.get(REACT_APP_API_URL+imgLocation,
+  //   {
+  //     responseType:"arraybuffer",
+  //   }
+  //   ).then((e)=>{
+  // setCourseImage(Buffer.from(e.data, "binary").toString("base64"))
+  // })
+  // },[])
+
+  // console.log(CourseImage)
+  return (
+    <div className="card col-sm-3">
+      {/* <img className="card-img-top" src={`data:jpeg/png;charset=utf-8;base64,${CourseImage}`} alt="Card  cap" /> */}
+      <div className="card-body">
+        <p className="card-text-h">{props.fieldData.name}</p>
+        {/* <p className="card-text">{props.fieldData.description}</p> */}
+        <a href="#" className="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+  )
 }

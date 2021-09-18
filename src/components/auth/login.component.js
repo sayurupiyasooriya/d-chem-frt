@@ -3,7 +3,7 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator"
-import AuthService from "../services/auth.service";
+import AuthService from "../../services/auth.service";
 
 const required = value => {
     if (!value) {
@@ -66,7 +66,8 @@ export default class Login extends Component {
             AuthService.login(this.state.userEmail, this.state.password).then(
                 (e) => {
                     // this.props.history.push("/profile");
-                    window.location.reload();
+                    // window.location.reload();
+                    this.props.setisLoggedIn(true)
                 },
                 error => {
                     const resMessage =

@@ -1,4 +1,4 @@
-import { Title, Home, AccountCircleRounded, Subject, Storage, ShowChart } from "@material-ui/icons"
+import { Home, AccountCircleRounded, Subject, Storage, ShowChart } from "@material-ui/icons"
 
 export const sidebarData = {}
 

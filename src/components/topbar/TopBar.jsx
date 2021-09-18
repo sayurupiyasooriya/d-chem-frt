@@ -1,11 +1,16 @@
 import React, {useContext} from 'react'
-import './topbar.css'
+import './topbar.scss'
 import { Notifications, Language,Settings, Menu } from '@material-ui/icons'
 import { Avatar } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import { NavContext } from '../../context/NavContext'
+import TopBarItem from './TopBarItem'
 
 
+
+const handleClickItem = (e)=>{
+    alert('nice')
+}
 export default function Topbar() {
 
     const [sideBar, setSideBar] = useContext(NavContext)
@@ -13,6 +18,8 @@ export default function Topbar() {
     const showSideBar = ()=>{
        setSideBar(!sideBar)
     }
+
+    
     return (
         <div className="topbar">
             <div className="topbarWrapper">
@@ -25,25 +32,10 @@ export default function Topbar() {
             </Link>
                 </div>
                 <div className="topbarLeft">
-                    <div className="topbarIconContainer">
-                    <Notifications/>
-                    <span className="topIconBadge">
-                        2
-                    </span>
-                    </div>
-                    <div className="topbarIconContainer">
-                    <Language/>
-                    <span className="topIconBadge">
-                        2
-                    </span>
-                    </div>
-                    <div className="topbarIconContainer">
-                    <Settings/>
-                    </div>
-                    <div className="topbarIconContainer">
-                    <Avatar className="topAvatar" alt="User Image" src="https://ibb.co/pxBVGNr"/>
-                   
-                    </div>
+                    <TopBarItem content={<Notifications/>} notification='0' />
+                    <TopBarItem content={ <Language/>}/>
+                    <TopBarItem content={ <Settings/>}/>
+                    <TopBarItem content={ <Avatar onClick={handleClickItem}/>}/>
                     
                 </div>
             </div>

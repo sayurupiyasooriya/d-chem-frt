@@ -1,8 +1,13 @@
+$colorTop : #f7d6f0;
+$colorBot:grey;
+
+
 .sidebar{
     flex: 1;
     height: 100vh;
     position: relative;
-    background-color:white; 
+    background: linear-gradient($colorTop,$colorBot);   
+    width: 20%;
 }
 
 .sidebar-collapse {
