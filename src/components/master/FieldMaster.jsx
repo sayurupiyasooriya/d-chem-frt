@@ -4,7 +4,11 @@ import React, { useEffect, useState } from 'react'
 import FieldService from '../../services/field.service';
 import { DataGrid } from '@mui/x-data-grid';
 import { Button } from 'react-bootstrap'
-import FieldModal from './FieldModal';
+import FieldModal from './MasterModal';
+import axios from 'axios';
+
+
+const { REACT_APP_API_URL } = process.env;
 
 const { getFields, getCourseImg } = FieldService;
 
@@ -17,9 +21,67 @@ const FieldMaster = () => {
   const [FieldData, setFieldData] = useState([]);
   const [selectionModel, setSelectionModel] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [newField, setNewField] = useState({
+    name: '',
+    image: {}
+  })
+
+
+  // initial data fetch and display
+  useEffect(() => {
+    fetchFieldData()
+  }, [])
+
+  const fetchFieldData = async () => {
+    getFields().then(e => {
+      setFieldData(e.data)
+    })
+  }
+
+
+  // handle form field data changes
+  const handleChange = (e) => {
+    const data = { ...newField }
+    if (e.id !== 'image') {
+      data[e.id] = e.val
+    } else {
+      data[e.id] = e.file
+    }
+    setNewField({
+      ...data
+    })
+    console.log(newField)
+  }
+
+  // handle form submit
+  const handleSubmit = (e) => {
+
+  }
+
+
+  const create = (e) => {
+    e.preventDefault()
+    let formData = new FormData()
+    for (let key in newField) {
+      formData.append(key, newField[key])
+    }
+    axios({
+      method: 'post',
+      url: REACT_APP_API_URL + 'field/create',
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      },
+      data: formData
+    }).then(data => {
+      console.log(data)
+    })
+
+  }
 
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
+
+
   const columns = [
 
     {
@@ -30,16 +92,6 @@ const FieldMaster = () => {
   ]
 
 
-  useEffect(() => {
-    fetchFieldData()
-  }, [])
-
-
-  const fetchFieldData = async () => {
-    getFields().then(e => {
-      setFieldData(e.data)
-    })
-  }
 
   return (
     <>
@@ -49,7 +101,15 @@ const FieldMaster = () => {
       >
         Add New
       </Button>
-      <FieldModal methods={handleClose} stat={showModal} />
+      <FieldModal
+        showModal={showModal}
+        newField={newField}
+        handleClose={handleClose}
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+        create={create}
+        modalName='Field'
+      />
 
       <div style={{ height: 400, width: '100%' }}>
         <DataGrid

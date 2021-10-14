@@ -12,6 +12,10 @@ class FieldService {
     //     return axios.get(REACT_APP_API_URL + 'fieldImage/' + fielddata)
 
     // }
+
+    getFieldSelect() {
+        return axios.get(REACT_APP_API_URL + 'field/fieldSelect')
+    }
 }
 
 export default new FieldService()

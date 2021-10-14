@@ -13,6 +13,10 @@ class CourseService {
         return axios.get(REACT_APP_API_URL + 'courseImage/' + courseData)
 
     }
+
+    getCourseByFieldId(fieldId) {
+        return axios.get(REACT_APP_API_URL + 'course/field/' + fieldId)
+    }
 }
 
 export default new CourseService()

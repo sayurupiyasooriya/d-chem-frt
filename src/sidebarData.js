@@ -27,7 +27,7 @@ sidebarData['test'] = [
     {
         title: "Master",
         index: 2,
-        path: "/profile",
+        path: "/master/field",
         icon: <Storage />
 
     },
