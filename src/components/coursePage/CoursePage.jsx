@@ -20,7 +20,7 @@ const CoursePage = (props) => {
 
 
     return (
-        <div>
+        <div className="container">
             <div className="row">
                 {isLoading ? <div>loading</div> :
                     courseData.map((course, i) => {

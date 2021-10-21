@@ -5,6 +5,7 @@ import SideBar from './components/sidebar/SideBar'
 import SignIn from './components/auth/login.component'
 import { NavProvider } from './context/NavContext';
 import Home from './components/home/Home';
+import Course from './components/coursePage/Course';
 import FieldMaster from './components/master/FieldMaster';
 import CoursePage from './components/coursePage/CoursePage';
 import CourseMaster from './components/master/CourseMaster';
@@ -51,11 +52,14 @@ const App = (props) => {
                     <Route path="/master/field">
                       <FieldMaster />
                     </Route>
-                    <Route path="/field/course">
+                    <Route exact path="/field/course">
                       <CoursePage />
                     </Route>
                     <Route path="/master/course">
                       <CourseMaster />
+                    </Route>
+                    <Route path="/field/course/data">
+                      <Course />
                     </Route>
                   </Switch>
                 </div>

@@ -17,6 +17,11 @@ class CourseService {
     getCourseByFieldId(fieldId) {
         return axios.get(REACT_APP_API_URL + 'course/field/' + fieldId)
     }
+
+    getCourseVideo(courseId) {
+        return axios.get(REACT_APP_API_URL + 'course/video/' + courseId)
+
+    }
 }
 
 export default new CourseService()
