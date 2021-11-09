@@ -12,7 +12,8 @@
     text-align: center;
 }
 
-.card-img-top {
-    height: 10rem;
-    margin-top: 5px;
+.top-buttons {
+    align-items: left;
+    display: flex;
+    justify-content: right;
 }

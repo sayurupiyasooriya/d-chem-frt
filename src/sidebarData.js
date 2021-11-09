@@ -18,16 +18,16 @@ sidebarData['test'] = [
 
     },
     {
-        title: "Reports",
+        title: "Course Master",
         index: 2,
-        path: "/profile",
+        path: "/master/course",
         icon: <Subject />
 
     },
     {
-        title: "Master",
+        title: "Field Master",
         index: 2,
-        path: "/profile",
+        path: "/master/field",
         icon: <Storage />
 
     },
