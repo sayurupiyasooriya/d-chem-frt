@@ -23,9 +23,10 @@ const CourseMaster = () => {
     const [CourseData, setCourseData] = useState([]);
     const [FieldData, setFieldData] = useState([]);
     const [selectionModel, setSelectionModel] = useState([]);
+    const [fieldId, setFieldId] = useState('')
     const [showModal, setShowModal] = useState(false);
     const [NewCourse, setNewCourse] = useState({
-        name: '',
+        title: '',
         field: ''
     })
 
@@ -53,7 +54,7 @@ const CourseMaster = () => {
     // handle form field data changes
     const handleChange = (e) => {
         const data = { ...NewCourse }
-        data[e.id] = e.val
+        data['title'] = e.val
 
         setNewCourse({
             ...data
@@ -63,10 +64,9 @@ const CourseMaster = () => {
     const handleSelect = (e) => {
         const data = { ...NewCourse }
         data['field'] = e
-        setCourseData({
-            data
+        setNewCourse({
+            ...data
         })
-        console.log(NewCourse)
     }
 
     // handle form submit
@@ -107,7 +107,6 @@ const CourseMaster = () => {
             width: 500
         }
     ]
-    console.log(NewCourse)
     return (
         <>
             <Button
@@ -122,10 +121,11 @@ const CourseMaster = () => {
                 handleClose={handleClose}
                 handleSubmit={handleSubmit}
                 handleChange={handleChange}
-                createCourse={createCourse}
+                create={createCourse}
                 handleSelect={handleSelect}
                 modalName='Course'
                 fieldData={FieldData}
+                setFieldId={setFieldId}
             />
 
             <div style={{ height: 400, width: '100%' }}>

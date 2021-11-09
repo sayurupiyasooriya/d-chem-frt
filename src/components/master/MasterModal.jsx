@@ -5,9 +5,9 @@ import { Modal, Button, Form, Dropdown } from 'react-bootstrap'
 const MasterModal = (props) => {
     const [fieldId, setfieldId] = useState('')
     const handleSelect = (e) => {
-        props.setCourseData(props.setCourseData)
+        props.setFieldId('61469cbbcaaa56d13f96de1d')
+        console.log(e)
     }
-    console.log(fieldId)
     return (
         <div>
             <Modal show={props.showModal} onHide={props.handleClick}>
@@ -28,7 +28,7 @@ const MasterModal = (props) => {
                         }
                         {
                             props.modalName == 'Course' &&
-                            <Dropdown onSelect={handleSelect}>
+                            <Dropdown onSelect={props.handleSelect}>
                                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                                     Select Field
                                 </Dropdown.Toggle>

@@ -25,7 +25,7 @@ export default function Topbar() {
             <div className="topbarWrapper">
                 <div className="topbarRight">
                     <div className="logo">
-                        English Academy
+                        LMS
                     </div>
                     <Link to="#" className="side-bar-close">
                         <Menu onClick={showSideBar} />

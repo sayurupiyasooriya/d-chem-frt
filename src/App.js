@@ -12,7 +12,6 @@ import CourseMaster from './components/master/CourseMaster';
 import { Route, BrowserRouter as Router, Switch, useLocation } from 'react-router-dom';
 import { FieldProvider } from './context/FieldContext';
 
-
 const App = (props) => {
 
   const [isLoggedIn, setisLoggedIn] = useState(false)
