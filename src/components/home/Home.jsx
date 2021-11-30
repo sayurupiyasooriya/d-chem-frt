@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../card/Card'
 import FieldService from '../../services/field.service';
-const { getFields, getCourseImg } = FieldService;
+const { getFields } = FieldService;
 
 const Home = () => {
 

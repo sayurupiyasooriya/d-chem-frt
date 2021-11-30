@@ -1,43 +1,83 @@
-import React, { useState, useContext } from 'react'
-import Card from './Card';
+import React, { useState, useContext, useEffect } from 'react'
 import CourseService from '../../services/course.service'
 import { FieldContext } from '../../context/FieldContext';
 import './card.scss'
 import CardVideo from './CardVideo';
 import CourseModal from './CourseModal'
-
+import base64 from 'base-64'
 
 
 
 const Course = (props) => {
-    const [isLoading, setIsLoading] = useState(true);
-    const [course, setCourse] = useContext(FieldContext);
+
+
+    // get course id from context api
+    const [course] = useContext(FieldContext);
+
+    //toggle modal
     const [showModal, setShowModal] = useState(false);
+
+    //set modal name
     const [modalName, setModalName] = useState('');
+
+    //upload video
     const [video, setVideo] = useState({
         video: ''
     })
+
+    //upload material
     const [material, setMaterial] = useState({
         material: ''
     })
+
+    const [courseVideo, setCourseVideo] = useState([])
+
+    const [courseDoc, setCourseDoc] = useState([])
+
+    const fetchCourseVideo = async () => {
+        CourseService.getCourseVideo(course).then(e => {
+            setCourseVideo(e.data[0].video)
+        })
+    }
+
+    const fetchCourseDoc = async () => {
+
+        CourseService.getCourseDocs(course).then(e => {
+            setCourseDoc(e.data[0].doc)
+            // console.log(e.data[0].doc)
+        })
+    }
+
+    useEffect(() => {
+        fetchCourseVideo()
+        fetchCourseDoc()
+    }, [])
 
     const handleShow = () => setShowModal(true);
     const handleClose = () => setShowModal(false);
     const handleChange = (e) => {
         if (modalName === 'Video') {
-            console.log(props.courseId)
             setVideo({
                 video: e.file
             })
         }
+        if (modalName === 'Material') {
+            setMaterial({
+                material: e.file
+            })
+        }
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        CourseService.uploadVideo(video, course)
-        console.log(video)
-    }
+        if (modalName === 'Video') {
+            await CourseService.uploadVideo(video, course)
+        }
+        if (modalName === 'Material') {
+            await CourseService.uploadMaterial(material, course)
+        }
 
+    }
     return (
         <div>
 
@@ -57,13 +97,9 @@ const Course = (props) => {
 
                 <div className="video">
                     <div className="row">
-                        <CardVideo courseId={course} />
-                        <div className="card col-sm-3">
-                            test
-                        </div>
-                        <div className="card col-sm-3">
-                            test
-                        </div>
+                        {courseVideo.map((videos, i) => {
+                            return (<CardVideo videoId={videos._id} />)
+                        })}
 
                     </div>
                 </div>
@@ -71,17 +107,12 @@ const Course = (props) => {
 
                 <div className="resources">
                     <h3 >Resources</h3>
-                    <div className="row">
-                        <div className="card col-sm-3">
+                    {courseDoc.map((doc, i) => {
+                        return (<a href={`http://localhost:3000/course/doc/download/${doc.docLocation}`}>
                             test
-                        </div>
-                        <div className="card col-sm-3">
-                            test
-                        </div>
-                        <div className="card col-sm-3">
-                            test
-                        </div>
-                    </div>
+                        </a>)
+                    })}
+
                 </div>
 
 

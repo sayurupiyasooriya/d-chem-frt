@@ -59,6 +59,8 @@ const CourseMaster = () => {
         setNewCourse({
             ...data
         })
+
+        console.log(NewCourse)
     }
 
     const handleSelect = (e) => {
@@ -67,6 +69,8 @@ const CourseMaster = () => {
         setNewCourse({
             ...data
         })
+
+        console.log(NewCourse)
     }
 
     // handle form submit
@@ -139,7 +143,7 @@ const CourseMaster = () => {
                     disableSelectionOnClick={false}
                     onSelectionModelChange={(newSelection) => {
                         CourseData.forEach((item) => {
-                            if (item._id == newSelection) {
+                            if (item._id === newSelection) {
                                 setSelectionModel(item)
                             }
                         })

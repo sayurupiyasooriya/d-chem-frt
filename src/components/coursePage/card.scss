@@ -17,3 +17,11 @@
     display: flex;
     justify-content: right;
 }
+
+.card-video {
+    margin: 5px;
+    width: 18rem;
+    max-height: 18rem;
+    align-items: center;
+    overflow: hidden;
+}

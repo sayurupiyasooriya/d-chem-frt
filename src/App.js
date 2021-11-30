@@ -11,13 +11,12 @@ import CoursePage from './components/coursePage/CoursePage';
 import CourseMaster from './components/master/CourseMaster';
 import { Route, BrowserRouter as Router, Switch, useLocation } from 'react-router-dom';
 import { FieldProvider } from './context/FieldContext';
+import Player from './components/coursePage/Player';
 
 const App = (props) => {
 
   const [isLoggedIn, setisLoggedIn] = useState(false)
-  const [fieldName, setFieldName] = useState([])
   const location = useLocation();
-  const field = "jhjfhjfh"
   const checkLogin = async () => {
     const localUser = await localStorage.getItem('user');
     if (localUser !== null) {
@@ -59,6 +58,9 @@ const App = (props) => {
                     </Route>
                     <Route path="/field/course/data">
                       <Course />
+                    </Route>
+                    <Route path="/stream">
+                      <Player />
                     </Route>
                   </Switch>
                 </div>

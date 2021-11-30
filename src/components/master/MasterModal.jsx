@@ -5,8 +5,8 @@ import { Modal, Button, Form, Dropdown } from 'react-bootstrap'
 const MasterModal = (props) => {
     const [fieldId, setfieldId] = useState('')
     const handleSelect = (e) => {
-        props.setFieldId('61469cbbcaaa56d13f96de1d')
-        console.log(e)
+        // props.setFieldId('61469cbbcaaa56d13f96de1d')
+        // console.log(e)
     }
     return (
         <div>
